@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import ExpenseForm from "./components/ExpenseForm";
 import ExpenseList from "./components/ExpenseList";
@@ -6,6 +6,7 @@ import ExpenseList from "./components/ExpenseList";
 function App() {
 
   const [expenses, setExpenses] = useState([
+    
     {
       id: 1,
       title: "Groceries",
@@ -25,6 +26,19 @@ function App() {
       category: "Education",
     },
   ]);
+  useEffect(() => {
+  const savedExpenses = localStorage.getItem("expenses");
+
+  if (savedExpenses) {
+    setExpenses(JSON.parse(savedExpenses));
+  }
+}, []);
+useEffect(() => {
+  console.log("Saving...", expenses);
+
+  localStorage.setItem("expenses", JSON.stringify(expenses));
+}, [expenses]);
+
 
   return (
     <div className="container">
@@ -44,3 +58,4 @@ function App() {
 }
 
 export default App;
+

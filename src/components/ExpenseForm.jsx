@@ -1,13 +1,11 @@
 import { useState } from "react";
 
 function ExpenseForm({ expenses, setExpenses }) {
-
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState("");
   const [category, setCategory] = useState("");
 
   const handleSubmit = () => {
-
     if (
       title.trim() === "" ||
       amount.trim() === "" ||
@@ -31,7 +29,7 @@ function ExpenseForm({ expenses, setExpenses }) {
   };
 
   return (
-    <div>
+  <div className="expense-form">
       <input
         type="text"
         placeholder="Enter expense title"
@@ -53,9 +51,9 @@ function ExpenseForm({ expenses, setExpenses }) {
         onChange={(e) => setCategory(e.target.value)}
       />
 
-      <button onClick={handleSubmit}>
-        Add Expense
-      </button>
+     <button className="add-btn" onClick={handleSubmit}>
+  Add Expense
+</button>
     </div>
   );
 }
