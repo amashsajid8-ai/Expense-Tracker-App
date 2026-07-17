@@ -1,6 +1,4 @@
 function ExpenseItem(props) {
-  console.log(props);
-
   const handleDelete = () => {
     const updatedExpenses = props.expenses.filter(
       (expense) => expense.id !== props.id
@@ -10,15 +8,20 @@ function ExpenseItem(props) {
   };
 
   return (
-    <li>
-      <h3>{props.title}</h3>
+    <div className="expense-card">
+      <div className="expense-info">
+        <h3>{props.title}</h3>
+        <p>{props.category}</p>
+      </div>
 
-      <p>Amount: ${props.amount}</p>
+      <div className="expense-right">
+        <h3>Rs {props.amount}</h3>
 
-      <p>Category: {props.category}</p>
-
-      <button onClick={handleDelete}>Delete</button>
-    </li>
+        <button className="delete-btn" onClick={handleDelete}>
+          Delete
+        </button>
+      </div>
+    </div>
   );
 }
 

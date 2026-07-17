@@ -2,10 +2,10 @@ import ExpenseItem from "./ExpenseItem";
 
 function ExpenseList({ expenses, setExpenses }) {
   return (
-    <div>
-      <h2>Expenses</h2>
+    <div className="expense-list-card">
+      <h2>Your Expenses</h2>
 
-      <ul>
+      <div className="expense-list">
         {expenses.map((expense) => (
           <ExpenseItem
             key={expense.id}
@@ -17,7 +17,7 @@ function ExpenseList({ expenses, setExpenses }) {
             setExpenses={setExpenses}
           />
         ))}
-      </ul>
+      </div>
     </div>
   );
 }

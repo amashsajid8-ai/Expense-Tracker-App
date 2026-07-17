@@ -3,7 +3,7 @@ import { useState } from "react";
 function ExpenseForm({ expenses, setExpenses }) {
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState("");
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState("Food");
 
   const handleSubmit = () => {
     if (
@@ -25,35 +25,41 @@ function ExpenseForm({ expenses, setExpenses }) {
 
     setTitle("");
     setAmount("");
-    setCategory("");
+    setCategory("Food");
   };
 
   return (
-  <div className="expense-form">
-      <input
-        type="text"
-        placeholder="Enter expense title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
+    <div className="expense-form-card">
+      <h2>Add New Expense</h2>
 
-      <input
-        type="number"
-        placeholder="Enter amount"
-        value={amount}
-        onChange={(e) => setAmount(e.target.value)}
-      />
+      <div className="expense-form">
+        <input
+          type="text"
+          placeholder="Expense Title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
 
-      <input
-        type="text"
-        placeholder="Enter category"
-        value={category}
-        onChange={(e) => setCategory(e.target.value)}
-      />
+        <input
+          type="number"
+          placeholder="Amount"
+          value={amount}
+          onChange={(e) => setAmount(e.target.value)}
+        />
 
-     <button className="add-btn" onClick={handleSubmit}>
-  Add Expense
-</button>
+        <select
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+        >
+          <option>Food</option>
+          <option>Travel</option>
+          <option>Education</option>
+        </select>
+
+        <button className="add-btn" onClick={handleSubmit}>
+          + Add Expense
+        </button>
+      </div>
     </div>
   );
 }
